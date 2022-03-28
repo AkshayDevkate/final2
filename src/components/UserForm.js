@@ -176,6 +176,7 @@ function UserForm() {
 
   return (
 <>
+<div id="footer">
     <div>
 {/* +++++++++++++++++++++++++++++++++++++++++Drop Down one ++++++++++++++++++++++++++++++++++++++++++++++++++++++*/}         
     <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
@@ -553,7 +554,7 @@ function UserForm() {
 
   </div>
 
-
+  </div>
   
    </>
   );

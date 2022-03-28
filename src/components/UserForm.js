@@ -149,6 +149,10 @@ function UserForm() {
 
   // calculating the price 
   const handlePrice = () => {
+    if (module ===  0) {
+      setModule( size/ 1.7)
+    }
+    
     // battery = yes 
     if (battery === 0){  
       if (wallbox === 0) // wallbox = yes 

@@ -108,31 +108,70 @@ function UserForm() {
   const [wallbox, setWallbox] = React.useState('');
   const [battery, setBattery] = React.useState('');
   const [year, setYear] = React.useState('');
-  const [price, setPrice] =  React.useState([10]);
+  const [price, setPrice] =  React.useState(0);
+
+  // variables for calculation functions module & size 
+  const [module, setModule] = React.useState(0);
+  const [size, setSize] = React.useState(0);
+
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
-  
-   
-    
   };
 
 // Handle changes function 
   const handleSelectChange = (event) => {
     setUsage(event.target.value);
-    setWallbox(event.target.value);
-    setBattery(event.target.value);
-    setYear(event.target.value);
-    
-    // try 
-    if (wallbox === 0){
-      setPrice(  price + 10);
-    }
-    if (wallbox === 1){
-    setPrice( {price: price + 20})
-    }
     
   };
+
+  const handleSize = (event) =>{
+    setSize(event.target.value);
+  } ;
+
+  const handleModule = (event) =>{
+    setModule(event.target.value);
+  };
+
+  const handleYear = (event) => {
+    setYear(event.target.value);
+  };
+
+  const handleBattery =(event) => {
+    setBattery(event.target.value);   
+  };
+
+  const handleWallbox =(event) => {
+    setWallbox(event.target.value);
+  };
+
+
+
+  // calculating the price 
+  const handlePrice = () => {
+    // battery = yes 
+    if (battery === 0){  
+      if (wallbox === 0) // wallbox = yes 
+      {
+        setPrice(module * 0.37 * 2400 +2000)
+      }
+      if (wallbox === 1){ //wallbox = no
+        setPrice(module * 0.37 * 2400)
+      }
+    }
+
+    // if battery = no
+    if (battery=== 1){
+      if (wallbox === 0){ // wallbox = yes 
+        setPrice(module * 0.37 *1400 + 2000)
+      }
+      if (wallbox === 1){ // wallbox = no 
+        setPrice(module * 0.37 * 1400)
+      }
+    }
+    
+  }
+  
   
 
   return (
@@ -238,7 +277,7 @@ function UserForm() {
           id="demo-simple-select-required"
           value={wallbox}
           label=""
-          onChange={handleSelectChange}
+          onChange={handleWallbox}
         >
           <MenuItem value="">
           </MenuItem>
@@ -279,7 +318,7 @@ function UserForm() {
           id="demo-simple-select-required"
           value={battery}
           label=""
-          onChange={handleSelectChange}
+          onChange={handleBattery}
         >
           <MenuItem value="">
           </MenuItem>
@@ -335,7 +374,7 @@ function UserForm() {
           id="demo-simple-select-required"
           value={year}
           label=""
-          onChange={handleSelectChange}
+          onChange={handleYear}
         >
           <MenuItem value="">
           </MenuItem>
@@ -359,7 +398,7 @@ function UserForm() {
     </Accordion>
 
 
-    {/* __++++++++++++++++++++++++++++++++++++++++++++Drop Down six +++++++++++++++++++++++++++++++++++++++++++ */} 
+    {/* ++++++++++++++++++++++++++++++++++++++++++++++Drop Down six +++++++++++++++++++++++++++++++++++++++++++ */} 
     <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
       <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
         <Typography>Step 6: Module or size</Typography>
@@ -368,7 +407,7 @@ function UserForm() {
         <Typography>  
 
 
-       {/* solar panel and meters */} 
+      {/* solar panel and meters */} 
       
       <h2> Wie viele Module passen maximal auf ihr Dach</h2>
       
@@ -380,9 +419,33 @@ function UserForm() {
       noValidate
       autoComplete="off"
     >
-      <TextField id="outlined-basic" label="module" variant="outlined" />
-      <TextField id="outlined-basic" label="Size" variant="outlined" />
+
+    {/* solar panel and meters */}   
+
+      <TextField 
+      id="outlined-basic" 
+      label="module" 
+      value={module}
+      onChange={handleModule}
+      variant="outlined" />
+
+
+      <TextField 
+      id="" 
+      label="Size" 
+      value={size}
+      onChange={handleSize}
+      variant="outlined" />
     
+      <>Size: {size}</>
+
+    <>Module:{module}</>
+
+
+    <button onClick={handleSelectChange}> calculate
+    </button>
+
+    <>price= {price}</>
     </Box>
       
 
@@ -397,7 +460,7 @@ function UserForm() {
 
 
     
-    {/* __+++++++++++++++++++++++++Drop Down seven +++++++++++++++++++++++++++++++++++++++++++ */} 
+    {/* ++++++++++++++++++++++++++++Drop Down seven +++++++++++++++++++++++++++++++++++++++++++ */} 
     <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
       <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
         <Typography>Step 7: Anzahl module</Typography>
@@ -423,8 +486,6 @@ function UserForm() {
       />
     </Box>
         
-      
-
       <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel6'} onClick={handleChange('panel6')}>
         Weiter
       </Button>
@@ -448,6 +509,9 @@ function UserForm() {
        
     <h3> wallbox : {wallbox}</h3>
 
+      <>module {module}</>
+      <Button onClick={handlePrice}>Click Me</Button>
+      <>price {price}</>
 
    
         

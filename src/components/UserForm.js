@@ -81,24 +81,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 
 
 
-const marks = [
-  {
-    value: 0,
-    label: '8 min',
-  },
-  {
-    value: 20,
-    label: 'x',
-  },
-  {
-    value: 37,
-    label: 'dragger',
-  },
-  {
-    value: 100,
-    label: 'Max',
-  },
-];
+
 
 // Slider 2
 const PrettoSlider = styled(Slider)({
@@ -140,9 +123,6 @@ const PrettoSlider = styled(Slider)({
   },
 });
 
-function valuetext(value) {
-  return `${value}°C`;
-}
 
 
 

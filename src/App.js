@@ -1,5 +1,8 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import UserForm from './components/UserForm';
 
 function App() {
   return (

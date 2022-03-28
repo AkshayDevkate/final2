@@ -21,9 +21,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 //Weiter Button 
 import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
-import Stack from '@mui/material/Stack';
+
 
 //Text Field
 import Box from '@mui/material/Box';
@@ -71,12 +70,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
-//Slider functions 
-const Separator = styled('div')(
-  ({ theme }) => `
-  height: ${theme.spacing(3)};
-`,
-);
+
 
 const marks = [
   {
@@ -106,7 +100,7 @@ function UserForm() {
   const [expanded, setExpanded] = React.useState('panel1');
 
   // Declare a new state variable, which we'll call "count"
-  const [ptz, setptz] = React.useState(0);
+
   const [city, setCity] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState('');
   //electricty usage 

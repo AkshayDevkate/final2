@@ -13,21 +13,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +21,125 @@
     transform: rotate(360deg);
   }
 }
+header{
+  display: flex;
+  justify-content: space-around;
+}
+.navbar {
+  overflow: hidden;
+  background-color: white;
+  font-family: Arial;
+  color: black;
+  padding: 1em;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+  color: black;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: black;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+  
+  
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  border-radius: 5px;
+  font-size: small;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#footer{
+  display: flex;
+  justify-content: space-around;
+  width: auto;
+  padding: 0px 30px;
+}
+
+.contact{
+  display: flex;
+}
+
+.footerLeft{
+  display:grid;
+  align-content: space-evenly;
+  justify-items: end;
+}
+
+.form{
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+
+}
+.progressBar{
+  padding-bottom: 4em;
+}
+.buttonsForm{
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+.divide{
+  
+ width: 80%;
+   float: left;
+}
+.divide2{
+  width: 20%;
+    float: left;
+  
+ }
+main{
+  display: flex;
+  justify-content: center;
+}
+

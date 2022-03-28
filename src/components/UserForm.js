@@ -30,6 +30,15 @@ import Box from '@mui/material/Box';
 //Slider 
 import Slider from '@mui/material/Slider';
 
+//Result Table
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
 // Postal codes of the cities
 const options = ['Berlin 12345', 'Berlin 12342', 'Berlin 12341', 'Frankfurt 12342', 'Frankfurt 12132', 'Hamburg 12323', 'Hamburg 12312', 'Hamburg 12223'];
 
@@ -91,9 +100,62 @@ const marks = [
   },
 ];
 
+// Slider 2
+const PrettoSlider = styled(Slider)({
+  color: '#52af77',
+  height: 8,
+  '& .MuiSlider-track': {
+    border: 'none',
+  },
+  '& .MuiSlider-thumb': {
+    height: 24,
+    width: 24,
+    backgroundColor: '#fff',
+    border: '2px solid currentColor',
+    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
+      boxShadow: 'inherit',
+    },
+    '&:before': {
+      display: 'none',
+    },
+  },
+  '& .MuiSlider-valueLabel': {
+    lineHeight: 1.2,
+    fontSize: 12,
+    background: 'unset',
+    padding: 0,
+    width: 32,
+    height: 32,
+    borderRadius: '50% 50% 50% 0',
+    backgroundColor: '#52af77',
+    transformOrigin: 'bottom left',
+    transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
+    '&:before': { display: 'none' },
+    '&.MuiSlider-valueLabelOpen': {
+      transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+    },
+    '& > *': {
+      transform: 'rotate(45deg)',
+    },
+  },
+});
+
 function valuetext(value) {
   return `${value}°C`;
 }
+
+
+
+// Result Table 
+function createData(name, calories, fat, carbs) {
+  return { name, calories, fat, carbs };
+}
+const rows = [
+  createData('Installation Firm 1', 'Price A', '***', 'Available'),
+  createData('Installation Firm 2', 'Price B','****','Not Available'),
+  createData('Installation Firm 3', 'Price C','*','Not Available'),
+ 
+];
 
 // All state and new state variables
 function UserForm() {
@@ -108,17 +170,24 @@ function UserForm() {
   const [wallbox, setWallbox] = React.useState('');
   const [battery, setBattery] = React.useState('');
   const [year, setYear] = React.useState('');
+
+  //Random 3 prices 
   const [price, setPrice] =  React.useState(0);
+  const [price1, setPrice1] = React.useState(0);
+  const [price2, setPrice2] = React.useState(0);
 
   // variables for calculation functions module & size 
   const [module, setModule] = React.useState(0);
   const [size, setSize] = React.useState(0);
 
 
+
+
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
+  
 // Handle changes function 
   const handleSelectChange = (event) => {
     setUsage(event.target.value);
@@ -158,9 +227,13 @@ function UserForm() {
       if (wallbox === 0) // wallbox = yes 
       {
         setPrice(module * 0.37 * 2400 +2000)
+        setPrice1(module * 0.37 * 2600 +2000)
+        setPrice2(module * 0.37 * 2800 +2000)
       }
       if (wallbox === 1){ //wallbox = no
         setPrice(module * 0.37 * 2400)
+        setPrice1(module * 0.37 * 2600)
+        setPrice2(module * 0.37 * 2800)
       }
     }
 
@@ -168,9 +241,13 @@ function UserForm() {
     if (battery=== 1){
       if (wallbox === 0){ // wallbox = yes 
         setPrice(module * 0.37 *1400 + 2000)
+        setPrice1(module * 0.37 *1600 + 2000)
+        setPrice2(module * 0.37 *1800 + 2000)
       }
       if (wallbox === 1){ // wallbox = no 
         setPrice(module * 0.37 * 1400)
+        setPrice1(module * 0.37 *1600)
+        setPrice2(module * 0.37 *1800 )
       }
     }
     
@@ -314,7 +391,7 @@ function UserForm() {
         <p> Wollen Sie einen Batteriespeicher installieren ?</p>
         {/* Drop Down two */} 
         <FormControl required sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-required-label">Wallbox</InputLabel>
+        <InputLabel id="demo-simple-select-required-label">Battery</InputLabel>
         <Select
           labelId="demo-simple-select-required-label"
           id="demo-simple-select-required"
@@ -459,27 +536,29 @@ function UserForm() {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>  
-
-
-       {/* Wallbox */} 
     
-        {/* Slider */} 
-        <Box sx={{ width: 250 }}>
+     
       
-      <Typography id="track-inverted-range-slider" gutterBottom>
-        Wahlen sie die anzahl module
-      </Typography>
-      <Slider
-        track="inverted"
-        aria-labelledby="track-inverted-range-slider"
-        getAriaValueText={valuetext}
-        defaultValue={[20, 37]}
-        marks={marks}
+
+    {/* Slider 2*/}
+
+    <Box sx={{ m: 3 }} />
+      <Typography gutterBottom>Wahlen Sie die Anzahl Module</Typography>
+      <PrettoSlider
+        valueLabelDisplay="auto"
+        aria-label="pretto slider"
+        defaultValue={module}
       />
-    </Box>
+
+    <Button onClick={handlePrice}>Calulate</Button>
+
+
+      <h3>Bandbreite der Angebotspreise</h3>
+      <>Minimum Price : {price}</>
+      <>Maximum Price : {price2}</>
         
       <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel6'} onClick={handleChange('panel6')}>
-        Weiter
+        Angebot anzelgen
       </Button>
 
 
@@ -497,11 +576,41 @@ function UserForm() {
       <AccordionDetails>
         <Typography>  
 
-      <Button onClick={handlePrice}>Click Me</Button>
-      <>price {price}</>
 
+       {/* Result Table */}   
+       <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Firm Names</TableCell>
+            <TableCell align="right">Price</TableCell>
+            <TableCell align="right">Rating</TableCell>
+            <TableCell align="right">Availability</TableCell>
+          
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow
+              key={row.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              <TableCell align="right">{row.calories}</TableCell>
+              <TableCell align="right">{row.fat}</TableCell>
+              <TableCell align="right">{row.carbs}</TableCell>
+              <TableCell align="right">{row.protein}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
    
-        
+        <>Price A : {price}</>
+        <>Price B: {price1}</>
+        <>Price c: {price2}</>
       
 
       <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel6'} onClick={handleChange('panel6')}>
@@ -522,10 +631,36 @@ function UserForm() {
       <AccordionDetails>
         <Typography>  
 
-
-       {/* Wallbox */} 
-    
-        {/* Drop Down two */} 
+       
+            <TextField
+              placeholder="Name"
+              label="Name"
+              
+              
+              margin="normal"
+              fullWidth
+              required
+            />
+            <br />
+            <TextField
+              placeholder="E-mail"
+              label="E-mail"
+             
+             
+              margin="normal"
+              fullWidth
+              required
+            />
+            <br />
+            <TextField
+              placeholder="Phone Number"
+              label="Phone"
+              
+              margin="normal"
+              fullWidth
+              required
+            />
+            <br />
         
       
 

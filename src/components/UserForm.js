@@ -437,16 +437,6 @@ function UserForm() {
       value={size}
       onChange={handleSize}
       variant="outlined" />
-    
-      <>Size: {size}</>
-
-    <>Module:{module}</>
-
-
-    <button onClick={handleSelectChange}> calculate
-    </button>
-
-    <>price= {price}</>
     </Box>
       
 
@@ -505,12 +495,7 @@ function UserForm() {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>  
-
-
-       
-    <h3> wallbox : {wallbox}</h3>
-
-      <>module {module}</>
+          
       <Button onClick={handlePrice}>Click Me</Button>
       <>price {price}</>
 

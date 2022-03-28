@@ -15,7 +15,7 @@ function Footer(props){
         </div>
         </div>
         <div className="footerLeft">
-        <img src="https://i.ibb.co/92J6GF6/Logos-2-800x132.png" alt="Logos-2-800x132"  alt="logos-360"  border="0"/>
+        <img src="https://i.ibb.co/92J6GF6/Logos-2-800x132.png" alt="Logos-2-800x132"  border="0"/>
         <a href="http://greenhomenow.de/daten/">Datenschutz</a>
         <a href="http://greenhomenow.de/impressum/">Impressum</a>
         </div>

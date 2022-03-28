@@ -288,9 +288,6 @@ function UserForm() {
         <FormHelperText>Required</FormHelperText>
       </FormControl>
 
-        <Button onClick={handleSelectChange}> calculate</Button>
-        <>price is {price}</>
-
       <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel2'} onClick={handleChange('panel3')}>
         Weiter
       </Button>
@@ -495,7 +492,7 @@ function UserForm() {
       </AccordionSummary>
       <AccordionDetails>
         <Typography>  
-          
+
       <Button onClick={handlePrice}>Click Me</Button>
       <>price {price}</>
 

@@ -80,9 +80,6 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 
-
-
-
 // Slider 2
 const PrettoSlider = styled(Slider)({
   color: '#52af77',
@@ -424,7 +421,7 @@ function UserForm() {
     {/* Stromzahler dropdown */} 
        <h2>Wie alt ist ihr Stromzähler</h2>
         
-        <p> Wollen Sie einen Batteriespeicher installieren ?</p>
+        <p> Wie alt ist Ihr Stromzähler?</p>
         {/* Drop Down two */} 
         <FormControl required sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-required-label">dropdown</InputLabel>

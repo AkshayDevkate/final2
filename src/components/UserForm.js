@@ -9139,32 +9139,88 @@ function UserForm() {
     
     setRent(hohe * breite * 20)
 
-    // battery = yes 
+  // battery = yes 
     if (battery === 0){  
       if (wallbox === 0) // wallbox = yes 
       {
-        setPrice(module * 0.37 * 2400 +2000 +  rent )
-        setPrice1(module * 0.37 * 2600 +2000 + rent )
-        setPrice2(module * 0.37 * 2800 +2000 + rent )
+        if (year === 20)
+        {
+          setPrice(module * 0.37 * 2400 +2000 +  rent + 800 )
+          setPrice1(module * 0.37 * 2600 +2000 + rent + 800 )
+          setPrice2(module * 0.37 * 2800 +2000 + rent + 800)
+        }
+        if (year === 30)
+        {
+          setPrice(module * 0.37 * 2400 +2000 +  rent + 1500 )
+          setPrice1(module * 0.37 * 2600 +2000 + rent + 1500 )
+          setPrice2(module * 0.37 * 2800 +2000 + rent + 1500 )
+        }
+        if (year === 40)
+        {
+          setPrice(module * 0.37 * 2400 +2000 +  rent + 2500 )
+          setPrice1(module * 0.37 * 2600 +2000 + rent + 2500 )
+          setPrice2(module * 0.37 * 2800 +2000 + rent + 2500 )
+        } 
       }
       if (wallbox === 1){ //wallbox = no
-        setPrice(module * 0.37 * 240 + rent)
-        setPrice1(module * 0.37 * 2600 + rent)
-        setPrice2(module * 0.37 * 2800 + rent )
+        if (year === 20 ){
+          setPrice(module * 0.37 * 240 + rent + 800)
+          setPrice1(module * 0.37 * 2600 + rent + 800)
+          setPrice2(module * 0.37 * 2800 + rent + 800)
+        }
+        if (year === 30 ){
+          setPrice(module * 0.37 * 240 + rent + 1500)
+          setPrice1(module * 0.37 * 2600 + rent + 1500)
+          setPrice2(module * 0.37 * 2800 + rent + 1500)
+        }
+        if (year === 40 ){
+          setPrice(module * 0.37 * 240 + rent + 2500)
+          setPrice1(module * 0.37 * 2600 + rent + 2500)
+          setPrice2(module * 0.37 * 2800 + rent + 2500)
+        }
       }
     }
 
     // if battery = no
     if (battery=== 1){
       if (wallbox === 0){ // wallbox = yes 
-        setPrice(module * 0.37 *1400 + 2000 + rent)
-        setPrice1(module * 0.37 *1600 + 2000 + rent)
-        setPrice2(module * 0.37 *1800 + 2000 + rent)
+        if (year === 20)  
+         { // year more than 10
+          setPrice(module * 0.37 *1400 + 2000 + rent + 800)
+          setPrice1(module * 0.37 *1600 + 2000 + rent + 800)
+          setPrice2(module * 0.37 *1800 + 2000 + rent + 800)
+        }
+        if (year === 30)
+         { // year more than 20
+          setPrice(module * 0.37 *1400 + 2000 + rent + 1500)
+          setPrice1(module * 0.37 *1600 + 2000 + rent + 1500)
+          setPrice2(module * 0.37 *1800 + 2000 + rent + 1500)
+        }
+        if (year === 40)
+        { // year more than 30
+         setPrice(module * 0.37 *1400 + 2000 + rent + 2500)
+         setPrice1(module * 0.37 *1600 + 2000 + rent + 2500)
+         setPrice2(module * 0.37 *1800 + 2000 + rent + 2500)
+       }
+        
       }
       if (wallbox === 1){ // wallbox = no 
-        setPrice(module * 0.37 * 1400 + rent)
-        setPrice1(module * 0.37 *1600 + rent)
-        setPrice2(module * 0.37 *1800  + rent)
+        if (year === 20){
+          setPrice(module * 0.37 * 1400 + rent + 800)
+          setPrice1(module * 0.37 *1600 + rent + 800)
+          setPrice2(module * 0.37 *1800  + rent + 800)
+        }
+        if (year === 30){
+          setPrice(module * 0.37 * 1400 + rent + 1500)
+          setPrice1(module * 0.37 *1600 + rent + 1500)
+          setPrice2(module * 0.37 *1800  + rent + 1500)
+        }
+        if (year === 40){
+          setPrice(module * 0.37 * 1400 + rent + 2500)
+          setPrice1(module * 0.37 *1600 + rent + 2500)
+          setPrice2(module * 0.37 *1800  + rent + 2500)
+        }
+       
       }
     }
     

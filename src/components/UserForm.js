@@ -9071,10 +9071,15 @@ function UserForm() {
 
   const [city, setCity] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState('');
+  
   //electricty usage 
   const [usage, setUsage] = React.useState('');
+
+  //wallbox
   const [wallbox, setWallbox] = React.useState('');
+  //battery
   const [battery, setBattery] = React.useState('');
+  //year 
   const [year, setYear] = React.useState('');
 
   //Random 3 prices 
@@ -9375,7 +9380,7 @@ function UserForm() {
           <MenuItem value={0}>Ja, gerne</MenuItem>
           <MenuItem value={1}>Nein, danke</MenuItem>
         </Select>
-        <FormHelperText>Required</FormHelperText>
+        <FormHelperText>Required*</FormHelperText>
       </FormControl>
       
 

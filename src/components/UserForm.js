@@ -9380,7 +9380,7 @@ function UserForm() {
           <MenuItem value={0}>Ja, gerne</MenuItem>
           <MenuItem value={1}>Nein, danke</MenuItem>
         </Select>
-        <FormHelperText>Required*</FormHelperText>
+        <FormHelperText>Required field *</FormHelperText>
       </FormControl>
       
 

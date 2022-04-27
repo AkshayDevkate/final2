@@ -9102,562 +9102,575 @@ function UserForm() {
   };
 
   
+ // CLose the current dropdown and open the next one
+ const nextChange = () => {
+  setExpanded(expanded + 1 )
+}
+
+
 // Handle changes function 
-  const handleSelectChange = (event) => {
-    setUsage(event.target.value);
-    
-  };
+const handleSelectChange = (event) => {
+  setUsage(event.target.value);
+  
+};
 
-  const handleSize = (event) =>{
-    setSize(event.target.value);
-  } ;
+const handleSize = (event) =>{
+  setSize(event.target.value);
+} ;
 
-  const handleModule = (event) =>{
-    setModule(event.target.value);
-  };
+const handleModule = (event) =>{
+  setModule(event.target.value);
+};
 
-  const handleYear = (event) => {
-    setYear(event.target.value);
-  };
+const handleYear = (event) => {
+  setYear(event.target.value);
+};
 
-  const handleBattery =(event) => {
-    setBattery(event.target.value);   
-  };
+const handleBattery =(event) => {
+  setBattery(event.target.value);   
+};
 
-  const handleWallbox =(event) => {
-    setWallbox(event.target.value);
-  };
+const handleWallbox =(event) => {
+  setWallbox(event.target.value);
+};
 
-  const handleHohe =(event) => {
-    setHohe(event.target.value);
-  };
+const handleHohe =(event) => {
+  setHohe(event.target.value);
+};
 
-  const handleBreite =(event) => {
-    setBreite(event.target.value);
-  };
+const handleBreite =(event) => {
+  setBreite(event.target.value);
+};
 
-  // calculating the price 
-  const handlePrice = () => {
-    if (module ===  0) {
-      setModule( size/ 1.7)
-    }
-    
-    setRent(hohe * breite * 20)
+// calculating the price 
+const handlePrice = () => {
+  if (module ===  0) {
+    setModule( size/ 1.7)
+  }
+  
+  setRent(hohe * breite * 20)
 
-  // battery = yes 
-    if (battery === 0){  
-      if (wallbox === 0) // wallbox = yes 
+// battery = yes 
+  if (battery === 0){  
+    if (wallbox === 0) // wallbox = yes 
+    {
+      if (year === 20)
       {
-        if (year === 20)
-        {
-          setPrice(module * 0.37 * 2400 +2000 +  rent + 800 )
-          setPrice1(module * 0.37 * 2600 +2000 + rent + 800 )
-          setPrice2(module * 0.37 * 2800 +2000 + rent + 800)
-        }
-        if (year === 30)
-        {
-          setPrice(module * 0.37 * 2400 +2000 +  rent + 1500 )
-          setPrice1(module * 0.37 * 2600 +2000 + rent + 1500 )
-          setPrice2(module * 0.37 * 2800 +2000 + rent + 1500 )
-        }
-        if (year === 40)
-        {
-          setPrice(module * 0.37 * 2400 +2000 +  rent + 2500 )
-          setPrice1(module * 0.37 * 2600 +2000 + rent + 2500 )
-          setPrice2(module * 0.37 * 2800 +2000 + rent + 2500 )
-        } 
+        setPrice(module * 0.37 * 2400 +2000 +  rent + 800 )
+        setPrice1(module * 0.37 * 2600 +2000 + rent + 800 )
+        setPrice2(module * 0.37 * 2800 +2000 + rent + 800)
       }
-      if (wallbox === 1){ //wallbox = no
-        if (year === 20 ){
-          setPrice(module * 0.37 * 240 + rent + 800)
-          setPrice1(module * 0.37 * 2600 + rent + 800)
-          setPrice2(module * 0.37 * 2800 + rent + 800)
-        }
-        if (year === 30 ){
-          setPrice(module * 0.37 * 240 + rent + 1500)
-          setPrice1(module * 0.37 * 2600 + rent + 1500)
-          setPrice2(module * 0.37 * 2800 + rent + 1500)
-        }
-        if (year === 40 ){
-          setPrice(module * 0.37 * 240 + rent + 2500)
-          setPrice1(module * 0.37 * 2600 + rent + 2500)
-          setPrice2(module * 0.37 * 2800 + rent + 2500)
-        }
+      if (year === 30)
+      {
+        setPrice(module * 0.37 * 2400 +2000 +  rent + 1500 )
+        setPrice1(module * 0.37 * 2600 +2000 + rent + 1500 )
+        setPrice2(module * 0.37 * 2800 +2000 + rent + 1500 )
+      }
+      if (year === 40)
+      {
+        setPrice(module * 0.37 * 2400 +2000 +  rent + 2500 )
+        setPrice1(module * 0.37 * 2600 +2000 + rent + 2500 )
+        setPrice2(module * 0.37 * 2800 +2000 + rent + 2500 )
+      } 
+    }
+    if (wallbox === 1){ //wallbox = no
+      if (year === 20 ){
+        setPrice(module * 0.37 * 240 + rent + 800)
+        setPrice1(module * 0.37 * 2600 + rent + 800)
+        setPrice2(module * 0.37 * 2800 + rent + 800)
+      }
+      if (year === 30 ){
+        setPrice(module * 0.37 * 240 + rent + 1500)
+        setPrice1(module * 0.37 * 2600 + rent + 1500)
+        setPrice2(module * 0.37 * 2800 + rent + 1500)
+      }
+      if (year === 40 ){
+        setPrice(module * 0.37 * 240 + rent + 2500)
+        setPrice1(module * 0.37 * 2600 + rent + 2500)
+        setPrice2(module * 0.37 * 2800 + rent + 2500)
       }
     }
+  }
 
-    // if battery = no
-    if (battery=== 1){
-      if (wallbox === 0){ // wallbox = yes 
-        if (year === 20)  
-         { // year more than 10
-          setPrice(module * 0.37 *1400 + 2000 + rent + 800)
-          setPrice1(module * 0.37 *1600 + 2000 + rent + 800)
-          setPrice2(module * 0.37 *1800 + 2000 + rent + 800)
-        }
-        if (year === 30)
-         { // year more than 20
-          setPrice(module * 0.37 *1400 + 2000 + rent + 1500)
-          setPrice1(module * 0.37 *1600 + 2000 + rent + 1500)
-          setPrice2(module * 0.37 *1800 + 2000 + rent + 1500)
-        }
-        if (year === 40)
-        { // year more than 30
-         setPrice(module * 0.37 *1400 + 2000 + rent + 2500)
-         setPrice1(module * 0.37 *1600 + 2000 + rent + 2500)
-         setPrice2(module * 0.37 *1800 + 2000 + rent + 2500)
-       }
-        
+  // if battery = no
+  if (battery=== 1){
+    if (wallbox === 0){ // wallbox = yes 
+      if (year === 20)  
+       { // year more than 10
+        setPrice(module * 0.37 *1400 + 2000 + rent + 800)
+        setPrice1(module * 0.37 *1600 + 2000 + rent + 800)
+        setPrice2(module * 0.37 *1800 + 2000 + rent + 800)
       }
-      if (wallbox === 1){ // wallbox = no 
-        if (year === 20){
-          setPrice(module * 0.37 * 1400 + rent + 800)
-          setPrice1(module * 0.37 *1600 + rent + 800)
-          setPrice2(module * 0.37 *1800  + rent + 800)
-        }
-        if (year === 30){
-          setPrice(module * 0.37 * 1400 + rent + 1500)
-          setPrice1(module * 0.37 *1600 + rent + 1500)
-          setPrice2(module * 0.37 *1800  + rent + 1500)
-        }
-        if (year === 40){
-          setPrice(module * 0.37 * 1400 + rent + 2500)
-          setPrice1(module * 0.37 *1600 + rent + 2500)
-          setPrice2(module * 0.37 *1800  + rent + 2500)
-        }
-       
+      if (year === 30)
+       { // year more than 20
+        setPrice(module * 0.37 *1400 + 2000 + rent + 1500)
+        setPrice1(module * 0.37 *1600 + 2000 + rent + 1500)
+        setPrice2(module * 0.37 *1800 + 2000 + rent + 1500)
       }
+      if (year === 40)
+      { // year more than 30
+       setPrice(module * 0.37 *1400 + 2000 + rent + 2500)
+       setPrice1(module * 0.37 *1600 + 2000 + rent + 2500)
+       setPrice2(module * 0.37 *1800 + 2000 + rent + 2500)
+     }
+      
     }
-    
-  }  
+    if (wallbox === 1){ // wallbox = no 
+      if (year === 20){
+        setPrice(module * 0.37 * 1400 + rent + 800)
+        setPrice1(module * 0.37 *1600 + rent + 800)
+        setPrice2(module * 0.37 *1800  + rent + 800)
+      }
+      if (year === 30){
+        setPrice(module * 0.37 * 1400 + rent + 1500)
+        setPrice1(module * 0.37 *1600 + rent + 1500)
+        setPrice2(module * 0.37 *1800  + rent + 1500)
+      }
+      if (year === 40){
+        setPrice(module * 0.37 * 1400 + rent + 2500)
+        setPrice1(module * 0.37 *1600 + rent + 2500)
+        setPrice2(module * 0.37 *1800  + rent + 2500)
+      }
+     
+    }
+  }
+  
+}  
 
-  return (
+return (
 <>
 <div id="footer">
-    <div>
+  <div>
 {/* +++++++++++++++++++++++++++++++++++++++++Drop Down one ++++++++++++++++++++++++++++++++++++++++++++++++++++++*/}         
-    <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-      <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-        <Typography>Step: 1 Platz</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography>
-          
-     
+  <Accordion expanded={expanded === 1} onChange={handleChange(1)}>
+    <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+      <Typography>Step: 1 Platz</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography>
+        
+   
 {/* Select city */} 
 <div>
-     
-      <br />
-      <h3>Wo wohnen sie</h3>
-      <Autocomplete
-        value={city}
-        onChange={(event, newValue) => {
-          setCity(newValue);
-        }}
-        inputValue={inputValue}
-        onInputChange={(event, newInputValue) => {
-          setInputValue(newInputValue);
-        }}
-        id="controllable-states-demo"
-        options={options}
-        sx={{ width: 300 }}
-        renderInput={(params) => <TextField {...params} label="Stadt / Platz" />}
-      />
-    </div>
+   
+    <br />
+    <h3>Wo wohnen sie</h3>
+    <Autocomplete
+      value={city}
+      onChange={(event, newValue) => {
+        setCity(newValue);
+      }}
+      inputValue={inputValue}
+      onInputChange={(event, newInputValue) => {
+        setInputValue(newInputValue);
+      }}
+      id="controllable-states-demo"
+      options={options}
+      sx={{ width: 300 }}
+      renderInput={(params) => <TextField {...params} label="Stadt / Platz" />}
+    />
+  </div>
 
+<div>
+  <Button variant="contained" color='success' endIcon={<SendIcon />}  onClick={nextChange} >
+      Weiter
+    </Button>
+</div>
 
-    <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel2'} onClick={handleChange('panel3')}>
-        Weiter
-      </Button>
-
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
 
 
 {/* ++++++++++++++++++++++++++++++++++++Drop Down two +++++++++++++++++++++++++++++++++++++=*/} 
-    <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-      <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-        <Typography>Step: 2  Usage</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography>
-      
+  <Accordion expanded={expanded === 2} onChange={handleChange(2)}>
+    <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
+      <Typography>Step: 2  Usage</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography>
+    
 
-    {/* electricity usage */} 
-        <p> Wie hoch ist ihr Jahresverbrauch?</p>
-        {/* Drop Down two */} 
-        <FormControl required sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-required-label">Wie hoch ist ihr Jahresverbrauch?</InputLabel>
-        <Select
-          labelId="demo-simple-select-required-label"
-          id="demo-simple-select-required"
-          value={usage}
-          label="*"
-        onChange={handleSelectChange}
-        >
-          <MenuItem value="">
-          </MenuItem>
-          <MenuItem value={10}>bis 2500 KWh (1-2 Personen)</MenuItem>
-          <MenuItem value={20}>bis 4000 KWh (3-4 Personen)</MenuItem>
-          <MenuItem value={30}>bis 6000 KWh (5-6 Personen)</MenuItem>
-          <MenuItem value={40}>mehr als 6,000 KWh</MenuItem>
-        </Select>
-        <FormHelperText>Required</FormHelperText>
-      </FormControl>
+  {/* electricity usage */} 
+      <p> Wie hoch ist ihr Jahresverbrauch?</p>
+      {/* Drop Down two */} 
+      <FormControl required sx={{ m: 1, minWidth: 120 }}>
+      <InputLabel id="demo-simple-select-required-label">Wie hoch ist ihr Jahresverbrauch?</InputLabel>
+      <Select
+        labelId="demo-simple-select-required-label"
+        id="demo-simple-select-required"
+        value={usage}
+        label="*"
+      onChange={handleSelectChange}
+      >
+        <MenuItem value="">
+        </MenuItem>
+        <MenuItem value={10}>bis 2500 KWh (1-2 Personen)</MenuItem>
+        <MenuItem value={20}>bis 4000 KWh (3-4 Personen)</MenuItem>
+        <MenuItem value={30}>bis 6000 KWh (5-6 Personen)</MenuItem>
+        <MenuItem value={40}>mehr als 6,000 KWh</MenuItem>
+      </Select>
+      <FormHelperText>Required</FormHelperText>
+    </FormControl>
+<div>
+    <Button variant="contained" color='success' endIcon={<SendIcon />} onClick={nextChange} >
+      Weiter
+    </Button>
+    </div>
 
-      <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel2'} onClick={handleChange('panel3')}>
-        Weiter
-      </Button>
-
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
 
 
 
 {/* +++++++++++++++++++++++++++++++++++++++++++Drop Down three ++++++++++++++++++++++++++++++++++++++++++++++++++ */} 
-    <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-      <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-        <Typography>Step: 3 Wallbox</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography>
-       
+  <Accordion expanded={expanded === 3} onChange={handleChange(3)}>
+    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+      <Typography>Step: 3 Wallbox</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography>
+     
 
-       {/* Wallbox */} 
-        <p> Wollen Sie einen Wallbox installieren ?</p>
-        {/* Drop Down two */} 
-        <FormControl required sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-required-label">Wallbox</InputLabel>
-        <Select
-          labelId="demo-simple-select-required-label"
-          id="demo-simple-select-required"
-          value={wallbox}
-          label=""
-          onChange={handleWallbox}
-        >
-          <MenuItem value="">
-          </MenuItem>
-          <MenuItem value={0}>Ja, gerne</MenuItem>
-          <MenuItem value={1}>Nein, danke</MenuItem>
-        </Select>
-        <FormHelperText>Required</FormHelperText>
-      </FormControl>
+     {/* Wallbox */} 
+      <p> Wollen Sie einen Wallbox installieren ?</p>
+      {/* Drop Down two */} 
+      <FormControl required sx={{ m: 1, minWidth: 120 }}>
+      <InputLabel id="demo-simple-select-required-label">Wallbox</InputLabel>
+      <Select
+        labelId="demo-simple-select-required-label"
+        id="demo-simple-select-required"
+        value={wallbox}
+        label=""
+        onChange={handleWallbox}
+      >
+        <MenuItem value="">
+        </MenuItem>
+        <MenuItem value={0}>Ja, gerne</MenuItem>
+        <MenuItem value={1}>Nein, danke</MenuItem>
+      </Select>
+      <FormHelperText>Required</FormHelperText>
+    </FormControl>
+<div>
+    <Button variant="contained"  color='success' endIcon={<SendIcon />} onClick={nextChange} >
+      Weiter
+    </Button>
+</div>
 
-      <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel2'} onClick={handleChange('panel3')}>
-        Weiter
-      </Button>
-
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
 
 
 {/* ++++++++++++++++++++++++++++++++++++++++++++++++++++ Drop Down Four ++++++++++++++++++++++++++++++++++++++++++ */} 
-    <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-      <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-        <Typography>Step : 4 Battery</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography>  
+  <Accordion expanded={expanded === 4} onChange={handleChange(4)}>
+    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+      <Typography>Step : 4 Battery</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography>  
 
 
-       {/* battery */} 
-        <p> Wollen Sie einen Batteriespeicher installieren ?</p>
-        {/* Drop Down two */} 
-        <FormControl required sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-required-label">Battery</InputLabel>
-        <Select
-          labelId="demo-simple-select-required-label"
-          id="demo-simple-select-required"
-          value={battery}
-          label=""
-          onChange={handleBattery}
-        >
-          <MenuItem value="">
-          </MenuItem>
-          <MenuItem value={0}>Ja, gerne</MenuItem>
-          <MenuItem value={1}>Nein, danke</MenuItem>
-        </Select>
-        <FormHelperText>Required field *</FormHelperText>
-      </FormControl>
-      
-
-      <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel2'} onClick={handleChange('panel3')}>
-        Weiter
-      </Button>
-
-
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
-
-
-    {/* +++++++++++++++++++++++++++++++++++++++++++++++++Drop Down Five+++++++++++++++++++++++++++++++++++++++++++ */} 
-    <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-      <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-        <Typography>Step 5: Fassade</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography>  
-
-
-    {/* Fassade */} 
-       <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-      <TextField 
-      id="outlined-basic" 
-      label="Hohe" 
-      value={hohe}
-      onChange={handleHohe}
-      variant="outlined" />
-
-      <TextField 
-      id="outlined-basic" 
-      label="Breite" 
-      value={breite}
-      onChange={handleBreite}
-      variant="outlined" />
-
+     {/* battery */} 
+      <p> Wollen Sie einen Batteriespeicher installieren ?</p>
+      {/* Drop Down two */} 
+      <FormControl required sx={{ m: 1, minWidth: 120 }}>
+      <InputLabel id="demo-simple-select-required-label">Battery</InputLabel>
+      <Select
+        labelId="demo-simple-select-required-label"
+        id="demo-simple-select-required"
+        value={battery}
+        label=""
+        onChange={handleBattery}
+      >
+        <MenuItem value="">
+        </MenuItem>
+        <MenuItem value={0}>Ja, gerne</MenuItem>
+        <MenuItem value={1}>Nein, danke</MenuItem>
+      </Select>
+      <FormHelperText>Required field *</FormHelperText>
+    </FormControl>
     
-    </Box>
-       
-    {/* Stromzahler dropdown */} 
-       <h2>Wie alt ist ihr Stromzähler</h2>
-        
-        <p> Wie alt ist Ihr Stromzähler?</p>
-        {/* Drop Down two */} 
-        <FormControl required sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-required-label">dropdown</InputLabel>
-        <Select
-          labelId="demo-simple-select-required-label"
-          id="demo-simple-select-required"
-          value={year}
-          label=""
-          onChange={handleYear}
-        >
-          <MenuItem value="">
-          </MenuItem>
-          <MenuItem value={10}>Unter 10 Jahre</MenuItem>
-          <MenuItem value={20}>Mehr als 10 Jahre</MenuItem>
-          <MenuItem value={20}>Mehr als 20 Jahre</MenuItem>
-          <MenuItem value={20}>Mehr als 30 Jahre</MenuItem>
-
-        </Select>
-        <FormHelperText>Required</FormHelperText>
-      </FormControl>
-      <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel6'}  onClick={handleChange('panel6')}>
-        Weiter
-      </Button>
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
-
-
-    {/* ++++++++++++++++++++++++++++++++++++++++++++++Drop Down six +++++++++++++++++++++++++++++++++++++++++++ */} 
-    <Accordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
-      <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-        <Typography>Step 6: Module or size</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography>  
-
-
-      {/* solar panel and meters */} 
-      
-      <h2> Wie viele Module passen maximal auf ihr Dach</h2>
-      
-       <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
-
-    {/* solar panel and meters */}   
-
-      <TextField 
-      id="outlined-basic" 
-      label="module" 
-      value={module}
-      onChange={handleModule}
-      variant="outlined" />
-
-
-      <TextField 
-      id="" 
-      label="Size" 
-      value={size}
-      onChange={handleSize}
-      variant="outlined" />
-    </Box>
-      
-
-      <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel6'} onClick={handleChange('panel6')}>
-        Weiter
-      </Button>
-
-
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
-
-
-    
-    {/* ++++++++++++++++++++++++++++Drop Down seven +++++++++++++++++++++++++++++++++++++++++++ */} 
-    <Accordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
-      <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-        <Typography>Step 7: Anzahl module</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography>  
-    
-     
-      
-
-    {/* Slider 2*/}
-
-    <Box sx={{ m: 3 }} />
-      <Typography gutterBottom>Wahlen Sie die Anzahl Module</Typography>
-      <PrettoSlider
-        valueLabelDisplay="auto"
-        aria-label="pretto slider"
-        defaultValue={module}
-      />
-
-    <Button onClick={handlePrice}>Calulate</Button>
-
-
-      <h3>Bandbreite der Angebotspreise</h3>
-      <>Minimum Price : {price}</>
-      <>Maximum Price : {price2}</>
-        
-      <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel6'} onClick={handleChange('panel6')}>
-        Angebot anzelgen
-      </Button>
-
-
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
-
-
-
- {/* ++++++++++++++++++++++++++++++++++++++++++++++++Drop Down Eight +++++++++++++++++++++++++++++++++++++++++++ */} 
- <Accordion expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
-      <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-        <Typography>Step 8: Results</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography>  
-
-
-       {/* Result Table */}   
-       <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Firm Names</TableCell>
-            <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Rating</TableCell>
-            <TableCell align="right">Availability</TableCell>
-          
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-   
-        <>Price A : {price}</>
-        <>Price B: {price1}</>
-        <>Price c: {price2}</>
-      
-
-      <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel6'} onClick={handleChange('panel6')}>
-        Weiter
-      </Button>
-
-
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
-
-
-  {/* +++++++++++++++++++++++++++++++++++++++++Drop Down Nine +++++++++++++++++++++++++++++++++++++++++++ */} 
- <Accordion expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
-      <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-        <Typography>Step 9: Contact Page</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography>  
-
-       
-            <TextField
-              placeholder="Name"
-              label="Name"
-              margin="normal"
-              fullWidth
-              required
-            />
-            <br />
-            <TextField
-              placeholder="E-mail"
-              label="E-mail"
-              margin="normal"
-              fullWidth
-              required
-            />
-            <br />
-            <TextField
-              placeholder="Phone Number"
-              label="Phone"
-              margin="normal"
-              fullWidth
-              required
-            />
-            <br />
-        
-      
-
-      <Button variant="contained" endIcon={<SendIcon />} expanded={expanded === 'panel6'} onClick={handleChange('panel6')}>
-        Weiter
-      </Button>
-
-
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
-
+  <div>
+    <Button variant="contained"  color='success' endIcon={<SendIcon />} onClick={nextChange} >
+      Weiter
+    </Button>
   </div>
 
-  </div>
+
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+
+
+  {/* +++++++++++++++++++++++++++++++++++++++++++++++++Drop Down Five+++++++++++++++++++++++++++++++++++++++++++ */} 
+  <Accordion expanded={expanded === 5} onChange={handleChange(5)}>
+    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+      <Typography>Step 5: Fassade</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography>  
+
+
+  {/* Fassade */} 
+     <Box
+    component="form"
+    sx={{
+      '& > :not(style)': { m: 1, width: '25ch' },
+    }}
+    noValidate
+    autoComplete="off"
+  >
+    <TextField 
+    id="outlined-basic" 
+    label="Hohe" 
+    value={hohe}
+    onChange={handleHohe}
+    variant="outlined" />
+
+    <TextField 
+    id="outlined-basic" 
+    label="Breite" 
+    value={breite}
+    onChange={handleBreite}
+    variant="outlined" />
+
   
-   </>
-  );
+  </Box>
+     
+  {/* Stromzahler dropdown */} 
+     <h2>Wie alt ist ihr Stromzähler</h2>
+      
+      <p> Wie alt ist Ihr Stromzähler?</p>
+      {/* Drop Down two */} 
+      <FormControl required sx={{ m: 1, minWidth: 120 }}>
+      <InputLabel id="demo-simple-select-required-label">dropdown</InputLabel>
+      <Select
+        labelId="demo-simple-select-required-label"
+        id="demo-simple-select-required"
+        value={year}
+        label=""
+        onChange={handleYear}
+      >
+        <MenuItem value="">
+        </MenuItem>
+        <MenuItem value={10}>Unter 10 Jahre</MenuItem>
+        <MenuItem value={20}>Mehr als 10 Jahre</MenuItem>
+        <MenuItem value={20}>Mehr als 20 Jahre</MenuItem>
+        <MenuItem value={20}>Mehr als 30 Jahre</MenuItem>
+
+      </Select>
+      <FormHelperText>Required</FormHelperText>
+    </FormControl>
+    <div>
+    <Button variant="contained" color='success' endIcon={<SendIcon />} onClick={nextChange} >
+      Weiter
+    </Button>
+    </div>
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+
+
+  {/* ++++++++++++++++++++++++++++++++++++++++++++++Drop Down six +++++++++++++++++++++++++++++++++++++++++++ */} 
+  <Accordion expanded={expanded === 6} onChange={handleChange(6)}>
+    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+      <Typography>Step 6: Module or size</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography>  
+
+
+    {/* solar panel and meters */} 
+    
+    <h2> Wie viele Module passen maximal auf ihr Dach</h2>
+    
+     <Box
+    component="form"
+    sx={{
+      '& > :not(style)': { m: 1, width: '25ch' },
+    }}
+    noValidate
+    autoComplete="off"
+  >
+
+  {/* solar panel and meters */}   
+
+    <TextField 
+    id="outlined-basic" 
+    label="module" 
+    value={module}
+    onChange={handleModule}
+    variant="outlined" />
+
+
+    <TextField 
+    id="" 
+    label="Size" 
+    value={size}
+    onChange={handleSize}
+    variant="outlined" />
+  </Box>
+    
+<div>
+    <Button variant="contained" color='success' endIcon={<SendIcon />} onClick={nextChange} >
+      Weiter
+    </Button>
+    </div>
+
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+
+
+  
+  {/* ++++++++++++++++++++++++++++Drop Down seven +++++++++++++++++++++++++++++++++++++++++++ */} 
+  <Accordion expanded={expanded === 7} onChange={handleChange(7)}>
+    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+      <Typography>Step 7: Anzahl module</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography>  
+  
+   
+    
+
+  {/* Slider 2*/}
+
+  <Box sx={{ m: 3 }} />
+    <Typography gutterBottom>Wahlen Sie die Anzahl Module</Typography>
+    <PrettoSlider
+      valueLabelDisplay="auto"
+      aria-label="pretto slider"
+      defaultValue={module}
+    />
+
+  <Button onClick={handlePrice}>Calulate</Button>
+
+
+    <h3>Bandbreite der Angebotspreise</h3>
+    <>Minimum Price : {price}</>
+    <>Maximum Price : {price2}</>
+
+    <div>
+    <Button variant="contained" color='success' endIcon={<SendIcon />} onClick={nextChange} >
+      Angebot anzelgen
+    </Button>
+    </div>  
+
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+
+
+
+{/* ++++++++++++++++++++++++++++++++++++++++++++++++Drop Down Eight +++++++++++++++++++++++++++++++++++++++++++ */} 
+<Accordion expanded={expanded === 8} onChange={handleChange(8)}>
+    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+      <Typography>Step 8: Results</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography>  
+
+
+     {/* Result Table */}   
+     <TableContainer component={Paper}>
+    <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+      <TableHead>
+        <TableRow>
+          <TableCell>Firm Names</TableCell>
+          <TableCell align="right">Price</TableCell>
+          <TableCell align="right">Rating</TableCell>
+          <TableCell align="right">Availability</TableCell>
+        
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row) => (
+          <TableRow
+            key={row.name}
+            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+          >
+            <TableCell component="th" scope="row">
+              {row.name}
+            </TableCell>
+            <TableCell align="right">{row.calories}</TableCell>
+            <TableCell align="right">{row.fat}</TableCell>
+            <TableCell align="right">{row.carbs}</TableCell>
+            <TableCell align="right">{row.protein}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </TableContainer>
+ 
+      <>Price A : {price}</>
+      <>Price B: {price1}</>
+      <>Price c: {price2}</>
+    
+  <div>
+    <Button variant='contained' color='success' endIcon={<SendIcon />} onClick={nextChange} >
+      Weiter
+    </Button>
+  </div>
+
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+
+
+{/* +++++++++++++++++++++++++++++++++++++++++Drop Down Nine +++++++++++++++++++++++++++++++++++++++++++ */} 
+<Accordion expanded={expanded === 9} onChange={handleChange(9)}>
+    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+      <Typography>Step 9: Contact Page</Typography>
+    </AccordionSummary>
+    <AccordionDetails>
+      <Typography>  
+
+     
+          <TextField
+            placeholder="Name"
+            label="Name"
+            margin="normal"
+            fullWidth
+            required
+          />
+          <br />
+          <TextField
+            placeholder="E-mail"
+            label="E-mail"
+            margin="normal"
+            fullWidth
+            required
+          />
+          <br />
+          <TextField
+            placeholder="Phone Number"
+            label="Phone"
+            margin="normal"
+            fullWidth
+            required
+          />
+          <br />
+      
+    
+    <div>
+    <Button variant="contained"  color='success' endIcon={<SendIcon />} onClick={nextChange} >
+      Weiter
+    </Button>
+    </div>
+
+      </Typography>
+    </AccordionDetails>
+  </Accordion>
+
+</div>
+
+</div>
+
+ </>
+);
 }
 
 export default UserForm;

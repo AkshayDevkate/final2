@@ -9526,48 +9526,12 @@ return (
 
 
   
-  {/* ++++++++++++++++++++++++++++Drop Down seven +++++++++++++++++++++++++++++++++++++++++++ */} 
-  <Accordion expanded={expanded === 7} onChange={handleChange(7)}>
-    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-      <Typography>Step 7: Anzahl module</Typography>
-    </AccordionSummary>
-    <AccordionDetails>
-      <Typography>  
-  
-   
-    
-
-  {/* Slider 2*/}
-
-  <Box sx={{ m: 3 }} />
-    <Typography gutterBottom>Wahlen Sie die Anzahl Module</Typography>
-    <PrettoSlider
-      valueLabelDisplay="auto"
-      aria-label="pretto slider"
-      defaultValue={module}
-    />
-
-  <Button onClick={handlePrice}>Calulate</Button>
-
-
-    <h3>Bandbreite der Angebotspreise</h3>
-    <>Minimum Price : {price}</>
-    <>Maximum Price : {price2}</>
-
-    <div>
-    <Button variant="contained" color='success' endIcon={<SendIcon />} onClick={nextChange} >
-      Angebot anzelgen
-    </Button>
-    </div>  
-
-      </Typography>
-    </AccordionDetails>
-  </Accordion>
 
 
 
-{/* ++++++++++++++++++++++++++++++++++++++++++++++++Drop Down Eight +++++++++++++++++++++++++++++++++++++++++++ */} 
-<Accordion expanded={expanded === 8} onChange={handleChange(8)}>
+
+{/* ++++++++++++++++++++++++++++++++++++++++++++++++Drop Down Seven +++++++++++++++++++++++++++++++++++++++++++ */} 
+<Accordion expanded={expanded === 7} onChange={handleChange(7)}>
     <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
       <Typography>Step 8: Results</Typography>
     </AccordionSummary>
@@ -9606,9 +9570,7 @@ return (
     </Table>
   </TableContainer>
  
-      <>Price A : {price}</>
-      <>Price B: {price1}</>
-      <>Price c: {price2}</>
+     
     
   <div>
     <Button variant='contained' color='success' endIcon={<SendIcon />} onClick={nextChange} >
@@ -9621,8 +9583,8 @@ return (
   </Accordion>
 
 
-{/* +++++++++++++++++++++++++++++++++++++++++Drop Down Nine +++++++++++++++++++++++++++++++++++++++++++ */} 
-<Accordion expanded={expanded === 9} onChange={handleChange(9)}>
+{/* +++++++++++++++++++++++++++++++++++++++++Drop Down Eight +++++++++++++++++++++++++++++++++++++++++++ */} 
+<Accordion expanded={expanded === 8} onChange={handleChange(8)}>
     <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
       <Typography>Step 9: Contact Page</Typography>
     </AccordionSummary>

@@ -38,6 +38,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+
+//info modal popperover
+import Popover from '@mui/material/Popover';
+import InfoIcon from '@mui/icons-material/Info';
+
+
 // Postal codes of the cities use https://www.seabreezecomputers.com/excel2array/ to convert excel to array  
 const options = ['47551 Bedburg-Hau',
 '52477 Alsdorf',
@@ -9097,9 +9103,36 @@ function UserForm() {
   const [rent, setRent] = React.useState(0);
 
 
+
+  //Popper functions
+  const [anchorEl, setAnchorEl] = React.useState({
+    value: 0,
+    anchorEl: null,
+    popno: -1
+  });
+
+  const handleClickP = (e, _popno) => {
+    setAnchorEl({ anchorEl: e.currentTarget, popno: _popno });
+  };
+
+  const handleCloseP = () => {
+    setAnchorEl({ anchorEl: null, popno: -1 });
+  };
+
+  const handleChangeP = (event, value) => {
+    setAnchorEl(anchorEl.value);
+  };
+
+  const openPopper = Boolean(anchorEl.anchorEl);
+  const id = openPopper ? 'simple-popover' : undefined;
+
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
+
+    //Add fav button
+    const [icon, setIcon] = React.useState(false)
+    const [sendInfo, setSendInfo] = React.useState([])
 
   
  // CLose the current dropdown and open the next one
@@ -9107,6 +9140,17 @@ function UserForm() {
   setExpanded(expanded + 1 )
 }
 
+
+
+  // create a state and provide postal code here 
+  
+  const getEmployee = async () => {
+    try {
+    console.log('hello world')
+
+    }catch (err) {}
+        
+  };
 
 // Handle changes function 
 const handleSelectChange = (event) => {
@@ -9477,7 +9521,7 @@ return (
   {/* ++++++++++++++++++++++++++++++++++++++++++++++Drop Down six   Module/ size of roof +++++++++++++++++++++++++++++++++++++++++++ */} 
   <Accordion expanded={expanded === 6} onChange={handleChange(6)}>
       <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-        <Typography>Step 7: Module or size</Typography>
+        <Typography>Step 6: Module or size</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>  
@@ -9516,11 +9560,11 @@ return (
 
     {/* solar panel and meters */}   
 
-    {module == 0 &&
+    {module === 0 &&
        <TextField 
        id="size" 
        label="size" 
-       value={RoofSize}
+       value={size}
        onChange={handleSize}
        variant="outlined" />
       }
@@ -9530,12 +9574,12 @@ return (
        disabled
        id="size" 
        label="size" 
-       value={RoofSize}
+       value={size}
        onChange={handleSize}
        variant="outlined" />
       }
 
-{RoofSize >= 1 &&
+{size >= 1 &&
        <TextField 
        disabled
        id="module" 
@@ -9545,7 +9589,7 @@ return (
        variant="outlined" />
       }
 
-{RoofSize== 0 &&
+{size === 0 &&
        <TextField 
        id="module" 
        label="module" 
@@ -9558,9 +9602,11 @@ return (
       
     <i class="bi bi-info-circle"></i>
 
-      <Button variant="contained" color='success' endIcon={<SendIcon />} expanded={expanded === 'panel6'} onClick={getEmployee}>
-        Weiter
-      </Button>
+    <div>
+    <Button variant='contained' color='success' endIcon={<SendIcon />} onClick={nextChange} >
+      Weiter
+    </Button>
+  </div>
 
 
         </Typography>

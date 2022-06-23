@@ -9018,45 +9018,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
-// Slider 2
-const PrettoSlider = styled(Slider)({
-  color: '#52af77',
-  height: 8,
-  '& .MuiSlider-track': {
-    border: 'none',
-  },
-  '& .MuiSlider-thumb': {
-    height: 24,
-    width: 24,
-    backgroundColor: '#fff',
-    border: '2px solid currentColor',
-    '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-      boxShadow: 'inherit',
-    },
-    '&:before': {
-      display: 'none',
-    },
-  },
-  '& .MuiSlider-valueLabel': {
-    lineHeight: 1.2,
-    fontSize: 12,
-    background: 'unset',
-    padding: 0,
-    width: 32,
-    height: 32,
-    borderRadius: '50% 50% 50% 0',
-    backgroundColor: '#52af77',
-    transformOrigin: 'bottom left',
-    transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
-    '&:before': { display: 'none' },
-    '&.MuiSlider-valueLabelOpen': {
-      transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
-    },
-    '& > *': {
-      transform: 'rotate(45deg)',
-    },
-  },
-});
+
 
 // Result Table 
 function createData(name, calories, fat, carbs) {
@@ -9088,10 +9050,7 @@ function UserForm() {
   //year 
   const [year, setYear] = React.useState('');
 
-  //Random 3 prices 
-  const [price, setPrice] =  React.useState(0);
-  const [price1, setPrice1] = React.useState(0);
-  const [price2, setPrice2] = React.useState(0);
+  
 
   // variables for calculation functions module & size 
   const [module, setModule] = React.useState(0);
@@ -9100,7 +9059,7 @@ function UserForm() {
   //Height and breadth step 5
   const [hohe, setHohe] = React.useState(0);
   const [breite, setBreite] = React.useState(0);
-  const [rent, setRent] = React.useState(0);
+  
 
 
 
@@ -9119,9 +9078,7 @@ function UserForm() {
     setAnchorEl({ anchorEl: null, popno: -1 });
   };
 
-  const handleChangeP = (event, value) => {
-    setAnchorEl(anchorEl.value);
-  };
+
 
   const openPopper = Boolean(anchorEl.anchorEl);
   const id = openPopper ? 'simple-popover' : undefined;
@@ -9129,10 +9086,6 @@ function UserForm() {
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
-
-    //Add fav button
-    const [icon, setIcon] = React.useState(false)
-    const [sendInfo, setSendInfo] = React.useState([])
 
   
  // CLose the current dropdown and open the next one
@@ -9142,15 +9095,7 @@ function UserForm() {
 
 
 
-  // create a state and provide postal code here 
   
-  const getEmployee = async () => {
-    try {
-    console.log('hello world')
-
-    }catch (err) {}
-        
-  };
 
 // Handle changes function 
 const handleSelectChange = (event) => {
@@ -9186,100 +9131,7 @@ const handleBreite =(event) => {
   setBreite(event.target.value);
 };
 
-// calculating the price 
-const handlePrice = () => {
-  if (module ===  0) {
-    setModule( size/ 1.7)
-  }
-  
-  setRent(hohe * breite * 20)
 
-// battery = yes 
-  if (battery === 0){  
-    if (wallbox === 0) // wallbox = yes 
-    {
-      if (year === 20)
-      {
-        setPrice(module * 0.37 * 2400 +2000 +  rent + 800 )
-        setPrice1(module * 0.37 * 2600 +2000 + rent + 800 )
-        setPrice2(module * 0.37 * 2800 +2000 + rent + 800)
-      }
-      if (year === 30)
-      {
-        setPrice(module * 0.37 * 2400 +2000 +  rent + 1500 )
-        setPrice1(module * 0.37 * 2600 +2000 + rent + 1500 )
-        setPrice2(module * 0.37 * 2800 +2000 + rent + 1500 )
-      }
-      if (year === 40)
-      {
-        setPrice(module * 0.37 * 2400 +2000 +  rent + 2500 )
-        setPrice1(module * 0.37 * 2600 +2000 + rent + 2500 )
-        setPrice2(module * 0.37 * 2800 +2000 + rent + 2500 )
-      } 
-    }
-    if (wallbox === 1){ //wallbox = no
-      if (year === 20 ){
-        setPrice(module * 0.37 * 240 + rent + 800)
-        setPrice1(module * 0.37 * 2600 + rent + 800)
-        setPrice2(module * 0.37 * 2800 + rent + 800)
-      }
-      if (year === 30 ){
-        setPrice(module * 0.37 * 240 + rent + 1500)
-        setPrice1(module * 0.37 * 2600 + rent + 1500)
-        setPrice2(module * 0.37 * 2800 + rent + 1500)
-      }
-      if (year === 40 ){
-        setPrice(module * 0.37 * 240 + rent + 2500)
-        setPrice1(module * 0.37 * 2600 + rent + 2500)
-        setPrice2(module * 0.37 * 2800 + rent + 2500)
-      }
-    }
-  }
-
-  // if battery = no
-  if (battery=== 1){
-    if (wallbox === 0){ // wallbox = yes 
-      if (year === 20)  
-       { // year more than 10
-        setPrice(module * 0.37 *1400 + 2000 + rent + 800)
-        setPrice1(module * 0.37 *1600 + 2000 + rent + 800)
-        setPrice2(module * 0.37 *1800 + 2000 + rent + 800)
-      }
-      if (year === 30)
-       { // year more than 20
-        setPrice(module * 0.37 *1400 + 2000 + rent + 1500)
-        setPrice1(module * 0.37 *1600 + 2000 + rent + 1500)
-        setPrice2(module * 0.37 *1800 + 2000 + rent + 1500)
-      }
-      if (year === 40)
-      { // year more than 30
-       setPrice(module * 0.37 *1400 + 2000 + rent + 2500)
-       setPrice1(module * 0.37 *1600 + 2000 + rent + 2500)
-       setPrice2(module * 0.37 *1800 + 2000 + rent + 2500)
-     }
-      
-    }
-    if (wallbox === 1){ // wallbox = no 
-      if (year === 20){
-        setPrice(module * 0.37 * 1400 + rent + 800)
-        setPrice1(module * 0.37 *1600 + rent + 800)
-        setPrice2(module * 0.37 *1800  + rent + 800)
-      }
-      if (year === 30){
-        setPrice(module * 0.37 * 1400 + rent + 1500)
-        setPrice1(module * 0.37 *1600 + rent + 1500)
-        setPrice2(module * 0.37 *1800  + rent + 1500)
-      }
-      if (year === 40){
-        setPrice(module * 0.37 * 1400 + rent + 2500)
-        setPrice1(module * 0.37 *1600 + rent + 2500)
-        setPrice2(module * 0.37 *1800  + rent + 2500)
-      }
-     
-    }
-  }
-  
-}  
 
 return (
 <>

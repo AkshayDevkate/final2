@@ -26,8 +26,7 @@ import SendIcon from '@mui/icons-material/Send';
 //Text Field
 import Box from '@mui/material/Box';
 
-//Slider 
-import Slider from '@mui/material/Slider';
+
 
 //Result Table
 import Table from '@mui/material/Table';

@@ -9334,7 +9334,7 @@ return (
      
 
      {/* Wallbox */} 
-     <h2>Hello World</h2>
+    
       <p> Wollen Sie einen Wallbox installieren ?</p>
       {/* Drop Down two */} 
       <FormControl required sx={{ m: 1, minWidth: 120 }}>
@@ -9474,66 +9474,104 @@ return (
   </Accordion>
 
 
-  {/* ++++++++++++++++++++++++++++++++++++++++++++++Drop Down six +++++++++++++++++++++++++++++++++++++++++++ */} 
+  {/* ++++++++++++++++++++++++++++++++++++++++++++++Drop Down six   Module/ size of roof +++++++++++++++++++++++++++++++++++++++++++ */} 
   <Accordion expanded={expanded === 6} onChange={handleChange(6)}>
-    <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-      <Typography>Step 6: Module or size</Typography>
-    </AccordionSummary>
-    <AccordionDetails>
-      <Typography>  
+      <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
+        <Typography>Step 7: Module or size</Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        <Typography>  
+
+        <Popover
+        id={id}
+        open={openPopper}
+        anchorEl={anchorEl}
+        onClose={handleCloseP}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'left',
+        }}
+      >
+       
+      </Popover>    
+
+      {/* solar panel and meters */} 
+      <div id="info">
+      <h2> Wie viele Module passen maximal auf ihr Dach</h2>
+      <InfoIcon color="success" onClick={e => handleClickP(e, 7)}/>
+      </div>
+      
+       <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+
+    {/* solar panel and meters */}   
+
+    {module == 0 &&
+       <TextField 
+       id="size" 
+       label="size" 
+       value={RoofSize}
+       onChange={handleSize}
+       variant="outlined" />
+      }
+
+{module >= 1 &&
+       <TextField 
+       disabled
+       id="size" 
+       label="size" 
+       value={RoofSize}
+       onChange={handleSize}
+       variant="outlined" />
+      }
+
+{RoofSize >= 1 &&
+       <TextField 
+       disabled
+       id="module" 
+       label="module" 
+       value={module}
+       onChange={handleModule}
+       variant="outlined" />
+      }
+
+{RoofSize== 0 &&
+       <TextField 
+       id="module" 
+       label="module" 
+       value={module}
+       onChange={handleModule}
+       variant="outlined" />
+      }
+
+    </Box>
+      
+    <i class="bi bi-info-circle"></i>
+
+      <Button variant="contained" color='success' endIcon={<SendIcon />} expanded={expanded === 'panel6'} onClick={getEmployee}>
+        Weiter
+      </Button>
 
 
-    {/* solar panel and meters */} 
-    
-    <h2> Wie viele Module passen maximal auf ihr Dach</h2>
-    
-     <Box
-    component="form"
-    sx={{
-      '& > :not(style)': { m: 1, width: '25ch' },
-    }}
-    noValidate
-    autoComplete="off"
-  >
-
-  {/* solar panel and meters */}   
-
-    <TextField 
-    id="outlined-basic" 
-    label="module" 
-    value={module}
-    onChange={handleModule}
-    variant="outlined" />
-
-
-    <TextField 
-    id="" 
-    label="Size" 
-    value={size}
-    onChange={handleSize}
-    variant="outlined" />
-  </Box>
-    
-<div>
-    <Button variant="contained" color='success' endIcon={<SendIcon />} onClick={nextChange} >
-      Weiter
-    </Button>
-    </div>
-
-      </Typography>
-    </AccordionDetails>
-  </Accordion>
-
-
-  
-
-
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
 
 
 {/* ++++++++++++++++++++++++++++++++++++++++++++++++Drop Down Seven +++++++++++++++++++++++++++++++++++++++++++ */} 
 <Accordion expanded={expanded === 7} onChange={handleChange(7)}>
     <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-      <Typography>Step 8: Results</Typography>
+      <Typography>Step 7: Results</Typography>
     </AccordionSummary>
     <AccordionDetails>
       <Typography>  
@@ -9586,7 +9624,7 @@ return (
 {/* +++++++++++++++++++++++++++++++++++++++++Drop Down Eight +++++++++++++++++++++++++++++++++++++++++++ */} 
 <Accordion expanded={expanded === 8} onChange={handleChange(8)}>
     <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-      <Typography>Step 9: Contact Page</Typography>
+      <Typography>Step 8: Contact Page</Typography>
     </AccordionSummary>
     <AccordionDetails>
       <Typography>  
